@@ -1,0 +1,32 @@
+# Jarvis2 - Advanced modular voice assistant (V2)
+# Install assistmint core first: pip install -e ../assistmint
+#
+# System dependencies (apt): xdotool, xclip
+
+requests
+faster-whisper
+sounddevice
+dateparser
+openwakeword
+scipy
+numpy
+noisereduce
+pyyaml
+piper-tts
+
+# Google Calendar integration
+gcalcli
+
+# GPU acceleration (CUDA 12)
+nvidia-cublas-cu12
+nvidia-cuda-runtime-cu12
+nvidia-cudnn-cu12
+nvidia-cuda-nvrtc-cu12
+nvidia-cufft-cu12
+
+# PyTorch with CUDA 12.1 support
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch
+
+# ONNX Runtime GPU for Piper TTS
+onnxruntime-gpu
