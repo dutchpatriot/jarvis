@@ -440,7 +440,6 @@ CODING_SPEAK_TRUNCATE_LENGTH = 2000  # Truncate spoken output after this many ch
 # -- Project Module --
 PROJECT_MAX_TOKENS = 4000              # Max tokens for LLM responses (multi-file context)
 PROJECT_CONTEXT_MAX_CHARS = 32000      # Max total prompt context size
-PROJECT_ROOT = None                    # None = use CWD, or set absolute path
 PROJECT_AUTO_SCAN = True               # Auto-scan on entering project mode
 PROJECT_MAX_FILE_SIZE = 100_000        # Skip files > 100KB in scan
 PROJECT_SCAN_EXTENSIONS = [

@@ -349,6 +349,7 @@ def main():
     parser.add_argument('--voice', '-v', action='store_true', help='Start in voice mode')
     parser.add_argument('--type', '-t', action='store_true', help='Start in type mode')
     parser.add_argument('--no-commands', '-nc', action='store_true', help='Skip TTS for help command')
+    parser.add_argument('--project-dir', '-p', help='Project directory for project mode (default: CWD)')
     args = parser.parse_args()
 
     # Set global flags
@@ -393,6 +394,10 @@ def main():
         selected_device=selected_device,
         samplerate=samplerate
     )
+
+    # Pass project directory if specified
+    if args.project_dir:
+        context.session_data["project_dir"] = args.project_dir
 
     # Determine mode
     mode = 'voice' if args.voice else ('type' if args.type else None)

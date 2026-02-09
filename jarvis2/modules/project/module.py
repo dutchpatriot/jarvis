@@ -173,8 +173,8 @@ class ProjectModule(BaseModule):
             speak("Ollama is not running. Please start it first.")
             return ModuleResult(text="Ollama not available", success=False)
 
-        # Determine project root
-        root = self._config["project_root"] or os.getcwd()
+        # Determine project root: --project-dir flag or CWD
+        root = context.session_data.get("project_dir") or os.getcwd()
 
         # Auto-scan
         if self._config["auto_scan"]:
@@ -202,7 +202,6 @@ class ProjectModule(BaseModule):
             "model": "qwen2.5:3b",
             "max_tokens": 4000,
             "context_max_chars": 32000,
-            "project_root": None,
             "auto_scan": True,
             "max_file_size": 100_000,
             "scan_extensions": [
@@ -226,13 +225,12 @@ class ProjectModule(BaseModule):
         try:
             from config import (
                 PROJECT_MAX_TOKENS, PROJECT_CONTEXT_MAX_CHARS,
-                PROJECT_ROOT, PROJECT_AUTO_SCAN,
+                PROJECT_AUTO_SCAN,
                 PROJECT_MAX_FILE_SIZE, PROJECT_SCAN_EXTENSIONS,
                 PROJECT_IGNORE_DIRS, PROJECT_GIT_TIMEOUT,
             )
             defaults["max_tokens"] = PROJECT_MAX_TOKENS
             defaults["context_max_chars"] = PROJECT_CONTEXT_MAX_CHARS
-            defaults["project_root"] = PROJECT_ROOT
             defaults["auto_scan"] = PROJECT_AUTO_SCAN
             defaults["max_file_size"] = PROJECT_MAX_FILE_SIZE
             defaults["scan_extensions"] = PROJECT_SCAN_EXTENSIONS
